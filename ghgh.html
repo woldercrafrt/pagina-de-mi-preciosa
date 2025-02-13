@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Amor, Ammi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos (mantenemos los estilos anteriores y agregamos) */
+        body {
+            font-family: 'Brush Script MT', cursive;
+            background: linear-gradient(135deg, #f8e2e7, #e6b4d3, #d988b8);
+            color: #612a3f;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid #e8a8c8;
+        }
+
+        .navbar-brand {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #d14974;
+        }
+
+        .nav-link {
+            color: #a83267;
+            font-size: 1.2em;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d14974;
+        }
+
+        .jumbotron {
+            background-image: url(Imagen\ de\ WhatsApp\ 2025-02-13\ a\ las\ 00.23.33_5b52820d.jpg);
+            background-repeat: no-repeat;
+            background-size: 80%;
+            margin-left: 15%;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            padding: 100px 25px;
+            text-align: center;
+            border-radius: 0;
+            margin-bottom: 0;
+            height: 75vh;
+        }
+
+        .jumbotron h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .jumbotron p {
+            font-size: 2em;
+        }
+
+        .container {
+            padding: 40px 15px;
+        }
+
+        .seccion-titulo {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d14974;
+            font-size: 2.5em;
+        }
+
+        .poema {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .poema:hover {
+            transform: scale(1.03);
+        }
+
+        .poema h2 {
+            color: #a83267;
+            font-size: 1.5em;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .poema p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Estilos sección Recuerdos */
+        #recuerdos .card {
+            border: none;
+            background: rgba(255, 240, 245, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        #recuerdos .card:hover {
+            transform: translateY(-5px);
+        }
+
+        #recuerdos .card-img-top {
+            border-radius: 10px 10px 0 0;
+        }
+
+        #recuerdos .card-title {
+            color: #c75182;
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+
+        #recuerdos .card-text {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #5a2537
+        }
+
+        /* Estilos Invitación */
+        #invitacion {
+            background-color: #f8e2e7;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        #invitacion h2 {
+            color: #d14974;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        #invitacion p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* --- Estilos para la sección del Mensaje Sorpresa --- */
+        #mensaje-sorpresa-container {
+            background-color: rgba(255, 255, 255, 0.85); /* Fondo semi-transparente */
+            padding: 30px; /* Buen espacio alrededor */
+            border-radius: 15px; /* Bordes redondeados */
+            margin: 40px auto; /* Centrado y con margen arriba/abajo */
+            text-align: center; /* Centrar contenido */
+            max-width: 800px; /* Ancho máximo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+
+        #mensaje-sorpresa-container h2{
+          color: #d14974;
+          margin-bottom: 5px;
+        }
+
+        #mensaje-especial {
+            font-size: 1.5em; /* Texto un poco más grande */
+            color: #c75182;
+            font-style: italic;
+            margin-bottom: 20px; /* Espacio del botón */
+            line-height: 1.5;
+        }
+
+        #boton-cupon {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: none; /* Oculto inicialmente */
+            margin-top: 10px; /* Separación */
+            transition: background-color 0.3s ease;
+        }
+
+        #boton-cupon:hover {
+            background-color: #c0392b;
+        }
+         /* --- Fin de estilos para Mensaje Sorpresa --- */
+
+        #invitacion .btn-rsvp {
+            background-color: #d14974;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+             margin-top: 20px; /* Espacio del mensaje/cupón */
+        }
+
+        #invitacion .btn-rsvp:hover {
+            background-color: #a83267;
+            transform: scale(1.05);
+        }
+        #confirmacion {
+           color: #4CAF50;
+           font-weight: bold;
+           margin-top: 10px;
+           display:none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #e8a8c8;
+        }
+     /* --- Estilos para la Cronología --- */
+    #cronologia {
+        position: relative; /* Importante para el posicionamiento absoluto de la línea */
+        padding-left: 30px; /* Espacio para los círculos/iconos */
+        margin-top: 40px; /* Espacio desde el título */
+        margin-bottom: 40px;
+    }
+
+    #cronologia::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 18px; /* Ajusta para centrar la línea con los círculos */
+        width: 4px; /* Ancho de la línea */
+        height: 100%;
+        background-color: #d14974; /* Color de la línea */
+    }
+
+    .evento {
+        position: relative; /* Para posicionar el círculo */
+        margin-bottom: 30px; /* Espacio entre eventos */
+        background-color: rgba(255,240,245, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .evento::before {
+        content: '';
+        position: absolute;
+        top: 20px; /* Ajusta para centrar verticalmente con el título */
+        left: -22px; /* Ajusta para que quede en la línea vertical */
+        width: 12px; /* Diámetro del círculo */
+        height: 12px; /* Diámetro del círculo */
+        border-radius: 50%; /* Forma circular */
+        background-color: #d14974; /* Color del círculo */
+        border: 3px solid white;  /*Borde*/
+    }
+
+
+    .evento-titulo {
+        font-size: 1.4em;
+        color: #a83267;
+        margin-bottom: 5px;
+    }
+
+    .evento-fecha {
+        font-size: 1em;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .evento-imagen {
+        float: right; /* Imagen a la derecha */
+        margin-left: 20px; /* Espacio entre imagen y texto */
+        margin-bottom: 10px;
+        max-width: 40%; /* Para que no sea demasiado grande */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .evento-descripcion {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #612a3f;
+
+    }
+    .evento:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* --- Fin de estilos para Cronología --- */
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Para Mi Ammi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#poemas">Poemas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#recuerdos">Recuerdos</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="#mensaje-sorpresa-container">Sorpresa</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="#cronologia">Nuestra Historia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#invitacion">San Valentín</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <h1>¡Hola, mi Amor!</h1>
+        <p>Esta página es solo para ti, Ammi, un pequeño rincón lleno de amor.</p>
+    </div>
+
+    <div class="container" id="poemas">
+        <h2 class="seccion-titulo">Poemas para Ti</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="poema">
+                    <h2>Hechizo de Luna</h2>
+                    <p>Luz de luna en tu mirada,<br>
+                        mi alma queda cautivada,<br>
+                        un hechizo una emocion,<br>
+                        nace una bella cancion.</p>
+                </div>
+                <div class="poema">
+                    <h2>Eterna Canción</h2>
+                    <p>En cada latido, en cada suspiro,<br>
+                        te llevo en mi corazón,<br>
+                        eres mi sueño, mi destino,<br>
+                        mi eterna canción.</p>
+                </div>
+                <div class="poema">
+                    <h2>Dulce Llama</h2>
+                    <p>Siento una dulce llama<br>
+                        cuando escucho que me llama<br>
+                        tu voz tierna y delicada,<br>
+                        mi alma queda enamorada</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="poema">
+                    <h2>Calor de Amor</h2>
+                    <p>Como el sol a la mañana<br>
+                        asi llegas a mi ventana<br>
+                        a llenarme de calor<br>
+                        a colmarme de tu amor</p>
+                </div>
+                <div class="poema">
+                    <h2>Estrella Guía</h2>
+                    <p>Eres tu mi alegria<br>
+                        la estrella que es mi guia<br>
+                        por el mundo de la vida<br>
+                        siempre tu la preferida</p>
+                </div>
+                <div class="poema">
+                    <h2>Dulce Campo</h2>
+                    <p>Tus palabras miel y encanto<br>
+                        me llevan a un dulce campo<br>
+                        donde flores de colores<br>
+                        cantan nuestros amores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="container" id="mensaje-sorpresa-container">
+        <h2>Un Mensaje Especial para Ti</h2>
+        <p id="mensaje-especial"></p>
+        <button id="boton-cupon" onclick="redirigirCupon()">¡Obtuviste un Cupón Sorpresa!</button>
+    </div>
+
+     <div class="container" id="cronologia">
+        <h2 class="seccion-titulo">Nuestra Historia</h2>
+        <div class="evento">
+            <h3 class="evento-titulo">Meses de Amistad y Conexión</h3>
+            <p class="evento-fecha">Junio 2024</p>
+
+            <p class="evento-descripcion">Pasamos meses conociéndonos más profundamente, compartiendo risas, conversaciones y momentos especiales. Ammi siempre fue increíblemente amable y especial conmigo, y su voz tenía el poder de tranquilizarme como nadie más.</p>
+       
+        </div>
+        <div class="evento">
+            <h3 class="evento-titulo">El Día que Todo Empezó (Minecraft)</h3>
+            <p class="evento-fecha">19/06/2024</p>
+
+            <p class="evento-descripcion">Aunque ya nos conocíamos, el día que le enseñé a Ammi a jugar Minecraft fue cuando realmente empecé a sentir algo especial. Verla explorar ese mundo virtual, con mi ayuda, creó una conexión única entre nosotros.</p>
+        </div>
+        
+        <div class="evento">
+            <h3 class="evento-titulo">La Declaración</h3>
+            <p class="evento-fecha">29/07/2024</p>
+
+            <p class="evento-descripcion">Después de meses de amistad, y algunas indirectas, Ammi dio el valiente primer paso y me confesó sus sentimientos. Yo, emocionado, le pregunté si quería ser mi novia. ¡Y dijo que sí!</p>
+        </div>
+        <div class="evento">
+            <h3 class="evento-titulo">Mi Primer Gran Amor</h3>
+            <p class="evento-fecha">29/07/2024</p>
+
+            <p class="evento-descripcion">Ammi no solo se convirtió en mi novia, sino también en mi primer gran amor. Una persona que me hace sentir completo, feliz y profundamente amado.</p>
+        </div>
+        <div class="evento">
+            <h3 class="evento-titulo">Cada Momento Contigo</h3>
+            <p class="evento-fecha">29/07/2024</p>
+
+            <p class="evento-descripcion">Me siento muy cómodo junto a ella su voz Me tranquiliza, es muy hermosa Por eso cada momento en el que hemos pasado juntos se a vuelto un recuerdo que atesoro en lo mas profundo de mi ser </p>
+        </div>
+    </div>
+
+    <div class="container" id="invitacion">
+        <h2>Invitación Especial de San Valentín</h2>
+        <p>Mi amor, Ammi, ¿aceptas pasar un San Valentín inolvidable conmigo?</p>
+        <p>Tengo planeado algo muy especial, lleno de sorpresas y momentos que atesoraremos para siempre. Será una noche donde celebraremos nuestro amor de una forma única.</p>
+        <button class="btn btn-rsvp" onclick="confirmarAsistencia()">¡Sí, acepto!</button>
+        <p id="confirmacion"></p>
+    </div>
+
+    <footer>
+        <p>Creado con todo mi amor para ti, Ammi. &hearts;</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function cambiarMensaje() {
+            const mensajes = [
+                // Mensajes para que se sienta cerca:
+                "Aunque estemos lejos, te siento aquí a mi lado. Mi corazón está conectado al tuyo.",
+                "Cierro los ojos y puedo sentir tu abrazo. Estás conmigo en cada latido.",
+                "La distancia es solo física. En mi mente y en mi corazón, estamos juntos siempre.",
+                "No importa cuántos kilómetros nos separen, nuestro amor los acorta en un instante.",
+                "Cada noche, miro la misma luna que tú y sé que estamos bajo el mismo cielo, conectados.",
+                "En mis sueños, siempre encontramos la manera de estar juntos, abrazados y felices.",
+                "Te llevo en mi mente y en mi corazón a donde quiera que vaya, como un amuleto de amor.",
+                "Me consuela pensar que, aunque estemos separados, compartimos el mismo aire y el mismo sol.",
+                "Tengo tantas ganas de verte que hasta siento que estas al lado mio, como si fuera real.",
+
+                // Mensajes para que sepa que tiene tu apoyo:
+                "Confío en ti y en todo lo que haces. Estoy aquí para apoyarte en cada paso que des.",
+                "Recuerda que tienes mi apoyo incondicional, en las buenas y en las malas. Siempre contigo.",
+                "No importa el desafío, lo enfrentaremos juntos. Tienes mi mano para sostenerte.",
+                "Eres fuerte y capaz, y yo estaré aquí para recordártelo cada vez que lo necesites.",
+                "Admiro tu fortaleza y estoy aquí para ayudarte a brillar. Cuenta conmigo para todo.",
+                "Nunca olvides que eres increíble y que mi apoyo para ti es infinito.",
+                "Soy tu fan número uno y siempre estaré en primera fila, aplaudiendo tus logros y apoyándote en tus desafíos.",
+                "Cuando sientas que no puedes más, recuerda que mi fuerza también es tuya. Tómala, la necesitas, la mereces.",
+                "No tengas miedo de caer, porque yo estaré ahí para ayudarte a levantarte, siempre.",
+                "Tus metas son mis metas, y juntos trabajaremos incansablemente hasta alcanzarlas.",
+                "Confía en mí, en mi criterio y en mi amor; haré todo lo que esté en mi mano para verte prosperar.",
+                "Recuerda que eres una persona increíblemente valiosa y que tienes mi apoyo incondicional para todo.",
+                "Si necesitas ayuda, solo pídela, y estaré a tu lado para dártela de la forma que sea.",
+                "Creo firmemente en ti, en tu talento y en tu potencial, y te apoyaré hasta que tú también lo hagas.",
+
+                // Mensajes para expresarle tu amor y cariño:
+                "Eres lo mejor que me ha pasado. Te amo con todo mi corazón.",
+                "Mi corazón late por ti y solo por ti. Eres mi todo.",
+                "Eres mi persona favorita, mi refugio, mi hogar. Te amo más de lo que las palabras pueden expresar.",
+                "Cada día a tu lado es un regalo que atesoro. Gracias por ser parte de mi vida.",
+                "No hay nada que desee más que hacerte feliz. Te amo profundamente.",
+                "Tu felicidad es mi felicidad. Haré todo lo que esté en mis manos para verte sonreír.",
+                "Tu amor me llena, me inspira y me motiva a ser una mejor persona cada día, te amo.",
+                "Eres el sol que ilumina mis días y la luna que vela mis noches. Te amo con locura.",
+                "Mi corazón te eligió a ti, y cada día me confirma que fue la mejor decisión que pudo tomar.",
+                "Eres mi paz, mi alegría, mi refugio y mi inspiración. Te amo más de lo que las palabras pueden decir.",
+                "Amarte es la aventura más emocionante y maravillosa que he vivido. Gracias por compartirla conmigo.",
+                "Cada momento que paso contigo se convierte en un recuerdo que atesoro en lo más profundo de mi ser.",
+                "Eres la persona más especial del universo y me siento increíblemente afortunado de tenerte en mi vida.",
+                "Eres el amor que siempre soñé, pero que nunca creí posible. Te amo con toda mi alma.",
+                "Mi amor por ti no tiene límites ni condiciones. Es un amor puro, sincero y eterno.",
+
+                // Frases adicionales:
+                "Eres mi sueño hecho realidad.",
+                "Contigo todo es mejor.",
+                "Te amo, te adoro, te necesito.",
+                "Eres mi complemento perfecto.",
+                "Gracias por existir y por estar a mi lado.",
+                "Eres la luz de mis días.",
+                "Siempre estás en mis pensamientos.",
+                "Tu risa es mi melodía favorita.",
+                "Eres el sueño que nunca quiero despertar.",
+                "Contigo, todo es posible.",
+                "Eres mi inspiración diaria.",
+                "Tu amor me hace más fuerte.",
+                "Eres el sol que ilumina mi vida.",
+                "Cada momento contigo es un regalo.",
+                "Eres mi razón de ser.",
+                "Tu amor es mi refugio.",
+                "Eres la flor más hermosa en mi jardín.",
+                "Contigo, el tiempo vuela.",
+                "Eres mi paz en medio de la tormenta.",
+                "Tu amor es un viaje sin fin.",
+                "Eres el latido de mi corazón."
+            ];
+
+            const mensajeEspecial = document.getElementById("mensaje-especial");
+            const randomIndex = Math.floor(Math.random() * mensajes.length);
+            mensajeEspecial.textContent = mensajes[randomIndex];
+
+            const probabilidad = Math.random();
+            const botonCupon = document.getElementById("boton-cupon");
+            if (probabilidad < 0.03) {
+                botonCupon.style.display = "block";
+            } else {
+                botonCupon.style.display = "none";
+            }
+        }
+
+        function redirigirCupon() {
+            window.location.href = "pagina_cupon.html"; // Reemplaza con la URL real
+        }
+
+        function confirmarAsistencia() {
+          document.getElementById("confirmacion").style.display = "block";
+          document.getElementById("confirmacion").innerText = "¡Grcias por llenar mi vida de tanto cariño. ❤️";
+        }
+
+        // Llama a cambiarMensaje() cuando la página se carga
+        window.onload = cambiarMensaje;
+
+    </script>
+</body>
+</html>
